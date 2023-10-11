@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Relatório de Férias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+            integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+    <script src="{{ url_for('static', filename='js/GerarPDFscripts.js')}}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-8 m-auto pt-2 pb-2 text-center">
+            <h1 class="my-4">Relatório de Férias</h1>
+            </div>
+
+        <form method="POST" class="form-inline">
+            <div class="form-group mr-2">
+                <label for="departamento" class="mr-2">Selecione o Departamento:</label>
+                <select class="form-control" id="departamento" name="departamento">
+                    <option value="">Todos os Departamentos</option>
+                    {% for departamento in departamentos %}
+                    <option value="{{ departamento.id }}">{{ departamento.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </form>
+        <hr>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Matrícula</th>
+                    <th>Nome do Funcionário</th>
+                    <th>Nome do Departamento</th>
+                    <th>Data de Início</th>
+                    <th>Dias de Férias</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for feria, departamento in ferias %}
+                <tr>
+                    <td>{{ feria.func_mat }}</td>
+                    <td>{{ feria.func_nome }}</td>
+                    <td>{{ departamento.nome }}</td>
+                    <td>{{ feria.data_ini }}</td>
+                    <td>{{ feria.qtd_dias }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <button id="generate-pdf" class="btn btn-danger">Gerar PDF</button>
+            <a href="/" class="btn btn-secondary">Voltar à Página Inicial</a> <!-- Botão para retornar à página inicial -->
+        </div>
+    </div>
+</body>
+
+</html>

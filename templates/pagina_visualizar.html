@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualização de Férias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>Visualização de Férias</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <table class="table">
+            <tr>
+                <th>Matrícula</th>
+                <td>{{ ferias_info.func_mat }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ ferias_info.func_nome }}</td>
+            </tr>
+            <tr>
+                <th>Departamento</th>
+                <td>{{ ferias_info.dpto_nome }}</td>
+            </tr>
+            <tr>
+                <th>Data de Início</th>
+                <td>{{ ferias_info.data_ini }}</td>
+            </tr>
+            <tr>
+                <th>Dias de Férias</th>
+                <td>{{ ferias_info.qtd_dias }}</td>
+            </tr>
+        </table>
+
+
+        <a href="/" class="btn btn-primary">Retornar</a>
+
+    </div>
+</body>
+</html>

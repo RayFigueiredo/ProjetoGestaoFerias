@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Férias</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/carregarDPTOeFUNC.js') }}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" href="data:,">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            carregarDepartamentos(); // Chame a função para carregar os departamentos quando a página for carregada
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 m-auto pt-2 pb-2 text-center">
+                <h1>Cadastro de Férias</h1>
+            </div>
+        </div>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-8 m-auto pt-4 pb-2 text-center">
+                <form method="POST">
+
+                    <div class="form-group">
+                        <label for="dpto_nome">Departamento:</label>
+                        <select class="form-control" id="dpto_nome" name="dpto_nome" required >
+                            <option disabled selected>Selecione um departamento</option>
+                        {% for departamento in departamentos %}
+                            <option value="{{ departamento.nome }}" data-departamento-id="{{ departamento.id }}">{{ departamento.nome }}</option>
+                        {% endfor %}
+
+                        </select>
+
+                        <input type="hidden" id="dpto_nome_hidden" name="dpto_nome_hidden" value = "">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="func_nome">Nome do Funcionário:</label>
+                        <select class="form-control" id="func_nome" name="func_nome" required>
+                            <option disabled selected>Selecione um funcionário</option>
+                        </select>
+                    </div>
+                    <input type="hidden" id="func_mat_hidden" name="func_mat_hidden">
+                    <div class="form-group">
+                        <label for="data_ini">Data de Início das Férias:</label>
+                        <input type="date" class="form-control" id="data_ini" name="data_ini" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="qtd_dias">Dias de Férias:</label>
+                        <input type="number" class="form-control" id="qtd_dias" name="qtd_dias" required>
+                    </div>
+
+                    <div class="col-8 m-auto pt-3 pb-2 text-center">
+                        <a href="/" class="btn btn-info">Voltar</a>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <div class="alert alert-info">
+                            <ul>
+                                {% for message in messages %}
+                                <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        {% endwith %}
+
+
+</body>
+
+</html>
