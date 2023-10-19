@@ -11,6 +11,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Mack#2351@localhost/bdferi
 
 init_app(app)
 
+
+@app.route("/")
+def home():
+    # Consulte todos os funcionários e suas férias
+
+    return render_template('index.html')
+
+
 def e_fim_de_semana(data):
     return data.weekday() >= 5  # 5 representa sábado e 6 representa domingo
 
@@ -19,26 +27,8 @@ def ajustar_data_se_fim_de_semana(data):
         data += timedelta(days=1)
     return data
 
-@app.route("/pagina_relatorio", methods=["GET", "POST"])
-def pagina_relatorio():
-    if request.method == "POST":
-        departamento_id = request.form.get("departamento")
-
-        if departamento_id:
-            ferias = db.session.query(Ferias, Departamento).join(Departamento).filter(Departamento.id == departamento_id).all()
-        else:
-            ferias = db.session.query(Ferias, Departamento).join(Departamento).all()
-
-        departamentos = Departamento.query.all()
-
-        return render_template('pagina_relatorio.html', ferias=ferias, departamentos=departamentos)
-
-    ferias = db.session.query(Ferias, Departamento).join(Departamento).all()
-    departamentos = Departamento.query.all()
-
-    return render_template('pagina_relatorio.html', ferias=ferias, departamentos=departamentos)
-@app.route("/")
-def home():
+@app.route("/ferias")
+def ferias():
     # Consulte todos os funcionários e suas férias
     ferias = Ferias.query.all()
 
