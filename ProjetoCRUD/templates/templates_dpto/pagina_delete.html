@@ -19,9 +19,9 @@
             <div class="col-12 text-center mt-4">
                 <p>Tem certeza de que deseja excluir este registro?</p>
                 <form method="POST">
-                    <input type="hidden" name="ferias_id" value="{{ ferias_id }}">
+                    <input type="hidden" name="dpto_id" value="{{ dpto_id }}">
                     <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
-                    <a href="/" class="btn btn-secondary">Cancelar</a>
+                    <a href="{{url_for('listar_departamentos')}}" class="btn btn-secondary">Cancelar</a>
                 </form>
             </div>
         </div>

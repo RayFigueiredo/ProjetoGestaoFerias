@@ -22,16 +22,17 @@
             </div>
 
         <form method="POST" class="form-inline">
-            <div class="form-group mr-2">
+            <div class="form-group mx-auto">
                 <label for="departamento" class="mr-2">Selecione o Departamento:</label>
-                <select class="form-control" id="departamento" name="departamento">
+                <select class="form-control mr-2" id="departamento" name="departamento">
                     <option value="">Todos os Departamentos</option>
                     {% for departamento in departamentos %}
                     <option value="{{ departamento.id }}">{{ departamento.nome }}</option>
                     {% endfor %}
                 </select>
+                <button type="submit" class="btn btn-primary">Filtrar</button>
             </div>
-            <button type="submit" class="btn btn-primary">Filtrar</button>
+
         </form>
         <hr>
 
@@ -60,7 +61,7 @@
 
         <div class="text-center">
             <button id="generate-pdf" class="btn btn-danger">Gerar PDF</button>
-            <a href="/" class="btn btn-secondary">Voltar à Página Inicial</a> <!-- Botão para retornar à página inicial -->
+            <a href="{{url_for('listar_ferias')}}" class="btn btn-secondary">Voltar à Página Inicial</a> <!-- Botão para retornar à página inicial -->
         </div>
     </div>
 </body>

@@ -28,7 +28,7 @@
 
         <div class="row">
             <div class="col-8 m-auto pt-4 pb-2 text-center">
-                <form method="POST">
+                <form method="POST" class="w-50 mx-auto">
 
                     <div class="form-group">
                         <label for="dpto_nome">Departamento:</label>
@@ -60,10 +60,19 @@
                         <input type="number" class="form-control" id="qtd_dias" name="qtd_dias" required>
                     </div>
 
-                    <div class="col-8 m-auto pt-3 pb-2 text-center">
-                        <a href="/ferias" class="btn btn-info">Voltar</a>
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
-                    </div>
+
+                        <div class="col-8 m-auto pt-2 pb-2 text-center">
+
+                            <div class="row">
+                                <div class="col-5">
+                                    <a href="{{url_for('listar_ferias')}}" class="btn btn-info btn-block">Voltar</a>
+                                </div>
+                                <div class="col-5">
+                                    <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                                </div>
+
+                            </div>
+                        </div>
 
 
                 </form>

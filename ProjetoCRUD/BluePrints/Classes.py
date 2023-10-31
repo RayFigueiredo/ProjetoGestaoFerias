@@ -40,6 +40,5 @@ class Ferias(db.Model):
 
 class Departamento(db.Model):
     __tablename__ = 'tb_dpto'
-
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nome = db.Column(db.String(255), nullable=False)

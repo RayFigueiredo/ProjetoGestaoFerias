@@ -7,9 +7,11 @@ function carregarDepartamentos() {
         success: function (data) {
             // Preencha o elemento select com os departamentos retornados do servidor
             var selectDepartamento = $('#dpto_nome');
-            //var hiddenDptoNome = $('#dpto_nome_hidden'); // Selecione o campo oculto para o nome do departamento
             selectDepartamento.empty();
             selectDepartamento.append('<option disabled selected>Selecione um departamento</option>');
+
+            // Variável para armazenar o departamento selecionado
+            var departamentoSelecionado;
 
             // Itere sobre os dados e adicione as opções ao elemento select
             $.each(data, function (key, value) {
@@ -21,15 +23,15 @@ function carregarDepartamentos() {
 
             // Configure o evento de mudança de departamento aqui, após preencher as opções
             $('#dpto_nome').change(function () {
-                var departamentoSelecionado = $('#dpto_nome').val();
-                //var departamentoSelecionado = $('#dpto_nome option:selected').text(); // Obtém o nome do departamento selecionado
-               // hiddenDptoNome.val(departamentoSelecionado); // Defina o valor do campo oculto para o nome do departamento
-                //console.log('Nome do departamento selecionado:', departamentoSelecionado); // Adicione esta linha para imprimir o no
+                departamentoSelecionado = $('#dpto_nome').val();
                 carregarFuncionarios(departamentoSelecionado); // Chame a função carregarFuncionarios com o ID do departamento
+                $('#dpto_id_hidden').val(departamentoSelecionado); // Defina o valor do campo oculto
+
             });
         }
     });
 }
+
 
 // Função para carregar funcionários com base no código do departamento
 function carregarFuncionarios(departamentoSelecionado) {

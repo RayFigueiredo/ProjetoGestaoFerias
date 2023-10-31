@@ -12,13 +12,14 @@
         <h1>Sistema de Gestão de Férias</h1>
     </div>
 
-    <div class="col-8 m-auto pt-3 pb-2 text-center">
-        <a href="/ferias" class="btn btn-success">Cadastrar Férias</a>
-        <a href="/pagina_gera_relatorio" class="btn btn-primary">Relatório</a> <!-- Botão para a página de relatório -->
-
+    <div class="col-3 m-auto pt-3 pb-2 text-center">
+        <a href="{{url_for('listar_ferias')}}" class="btn btn-primary btn-block">Gestão Férias</a>
+        <a href="{{url_for('listar_departamentos')}}" class="btn btn-primary btn-block">Cadastrar Departamento</a>
+        <a href="{{url_for('listar_funcionarios')}}" class="btn btn-primary btn-block">Cadastrar Funcionário</a>
     </div>
 
 
 </body>
 
 </html>
+
