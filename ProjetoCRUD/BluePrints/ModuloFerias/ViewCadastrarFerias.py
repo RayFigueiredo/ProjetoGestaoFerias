@@ -57,7 +57,7 @@ def cadastro_ferias():
         data_ini = datetime.strptime(request.form["data_ini"], "%Y-%m-%d")
         if data_ini.weekday() >= 5:  # 5 é sábado e 6 é domingo
             flash("A data de início das férias não pode ser um fim de semana.", "error")
-            return render_template('tela_cadastro_ferias.html')
+            return render_template('templates_ferias/tela_cadastro_ferias.html')
 
         dpto_id_html = request.form["dpto_nome"]
         # Crie uma consulta SQL parametrizada para obter o nome do departamento com base no ID
