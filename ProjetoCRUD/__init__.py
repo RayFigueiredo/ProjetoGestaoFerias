@@ -11,8 +11,7 @@ from ProjetoCRUD.BluePrints.ModuloFunc import ViewCRUDFunc
 
 from ProjetoCRUD.BluePrints import TelaInicial
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Mack#2351@localhost/bdferias'
-# app.config['SQLALCHEMY_DATABASE_URI'] =
-# 'mysql://root:945bo1bQFfqgqWY3NtLH@containers-us-west-87.railway.app:6810/railway'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Mack#2351@localhost/bdferias'
+app.config['SQLALCHEMY_DATABASE_URI'] ='mysql://root:945bo1bQFfqgqWY3NtLH@containers-us-west-87.railway.app:6810/railway'
 # Inicialize o aplicativo com a extensão SQLAlchemy
 db.init_app(app)
