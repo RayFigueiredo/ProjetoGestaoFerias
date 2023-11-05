@@ -11,21 +11,7 @@ Gestão de Férias
         <h1>Sistema de Cadastro de Férias</h1>
     </div>
 
-    <div class="col-6 m-auto pt-3 pb-2 text-center">
-        <div class="row">
-            <div class="col-4">
-                <a href="{{url_for('cadastro_ferias')}}" class="btn btn-success btn-block font-weight-bold">Cadastrar Férias</a>
-            </div>
-            <div class="col-4">
-                <a href="{{url_for('pagina_gera_relatorio')}}" class="btn btn-primary btn-block font-weight-bold">Relatório</a>
-            </div>
-            <div class="col-4">
-                <a href="{{url_for('home')}}" class="btn btn-danger btn-block font-weight-bold">Voltar</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-8 m-auto pt-4 pb-2 text-center">
+    <div class="col-10 m-auto pt-4 pb-2 text-center">
         <table class="table tabela-branca table table-striped">
             <thead class="thead-dark">
                 <tr>
@@ -69,6 +55,21 @@ Gestão de Férias
                 {% endfor %}
             </tbody>
         </table>
+    </div>
+
+
+    <div class="col-6 m-auto pt-3 pb-2 text-center">
+        <div class="row">
+            <div class="col-4">
+                <a href="{{url_for('cadastro_ferias')}}" class="btn btn-success btn-block font-weight-bold">Cadastrar Férias</a>
+            </div>
+            <div class="col-4">
+                <a href="{{url_for('pagina_gera_relatorio')}}" class="btn btn-primary btn-block font-weight-bold">Relatório</a>
+            </div>
+            <div class="col-4">
+                <a href="{{url_for('home')}}" class="btn btn-danger btn-block font-weight-bold">Voltar</a>
+            </div>
+        </div>
     </div>
 </body>
 {% endblock %}
