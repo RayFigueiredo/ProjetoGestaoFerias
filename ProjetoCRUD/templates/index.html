@@ -3,23 +3,41 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Tela Inicial</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>{% block titulo %}Sistema Gestão de Férias{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-
+{% block body%}
 <body>
-    <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>Sistema de Gestão de Férias</h1>
+    <div class="container text-center">
+        <h1 class="mt-5">Sistema de Gestão de Férias</h1>
     </div>
 
-    <div class="col-3 m-auto pt-3 pb-2 text-center">
-        <a href="{{url_for('listar_ferias')}}" class="btn btn-primary btn-block">Gestão Férias</a>
-        <a href="{{url_for('listar_departamentos')}}" class="btn btn-primary btn-block">Cadastrar Departamento</a>
-        <a href="{{url_for('listar_funcionarios')}}" class="btn btn-primary btn-block">Cadastrar Funcionário</a>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{{url_for('listar_ferias')}}">
+                    <img src="{{url_for('static', filename='img/index_ferias.jpeg')}}" alt="Gestão de Férias" class="img-fluid">
+                    <p class="text-center mt-2 img-caption">Gestão de Férias</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{url_for('listar_departamentos')}}">
+                    <img src="{{url_for('static', filename='img/index_dpto.jpeg')}}" alt="Cadastrar Departamento" class="img-fluid">
+                    <p class="text-center mt-2 img-caption">Cadastrar Departamento</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{url_for('listar_funcionarios')}}">
+                    <img src="{{url_for('static', filename='img/index_func.jpeg')}}" alt="Cadastrar Funcionário" class="img-fluid">
+                    <p class="text-center mt-2 img-caption">Cadastrar Funcionário</p>
+                </a>
+            </div>
+        </div>
     </div>
-
-
 </body>
+{% endblock %}
 
 </html>
-

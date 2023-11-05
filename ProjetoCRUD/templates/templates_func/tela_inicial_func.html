@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "index.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Gestão de Férias</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
+{% block titulo %}
+Gestão de Funcionários
+{% endblock %}
+
+{% block body %}
 
 <body>
     <div class="col-8 m-auto pt-2 pb-2 text-center">
@@ -13,7 +12,7 @@
     </div>
 
     <div class="col-8 m-auto pt-4 pb-2 text-center">
-        <table class="table">
+        <table class=" table tabela-branca table table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Matrícula</th>
@@ -59,6 +58,8 @@
             </div>
         </div>
     </div>
+<p></p>
+<p></p>
+<p></p>
 </body>
-
-</html>
+{% endblock %}

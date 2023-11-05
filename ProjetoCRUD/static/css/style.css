@@ -1,0 +1,35 @@
+body {
+    background: url("../img/index_background2.jpeg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+h1 {
+    color: #FFFFFF; /* Altere para a cor desejada, por exemplo, #000 para preto */
+}
+
+.img-caption {
+    color: #FFFFFF; /* Altere para a cor desejada, por exemplo, #999 para cinza */
+    font-size: 24px;
+}
+
+.tabela-branca {
+    background-color: #FFFFFF; /* Define o fundo branco da tabela */
+}
+
+/* Alinhar os ícones lado a lado */
+.icon-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Adicionar margem direita para separar os ícones */
+.icon-container a {
+    margin-right: 10px; /* Altere o valor de acordo com a distância desejada entre os ícones */
+}
+
+/* Ajustar o tamanho dos ícones */
+.icon-container svg {
+    width: 20px; /* Defina o tamanho desejado em pixels */
+    height: 20px;
+}

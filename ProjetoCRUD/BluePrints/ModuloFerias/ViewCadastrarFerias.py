@@ -1,8 +1,7 @@
 from flask import render_template, redirect, request, jsonify, flash
 from ProjetoCRUD import app, db, Departamento, Ferias, Funcionario
 from sqlalchemy.sql import text
-from datetime import date, timedelta
-from datetime import datetime
+from datetime import date, timedelta, datetime
 
 
 def e_fim_de_semana(data):
@@ -20,6 +19,9 @@ def listar_ferias():
 
     # Consulte todos os funcionários e suas férias
     lista_ferias = Ferias.query.all()
+    # Formate a data no formato desejado
+    for ferias in lista_ferias:
+        ferias.data_ini_formatada = ferias.data_ini.strftime('%d/%m/%Y')
 
     return render_template('templates_ferias/tela_inicial_ferias.html', lista_ferias=lista_ferias)
 
@@ -115,4 +117,3 @@ def atualizar_ferias(ferias_id, data_ini, qtd_dias):
         db.session.commit()
         return True  # Indicação de sucesso na atualização
     return False  # Indicação de que as férias não foram encontradas para atualização
-
