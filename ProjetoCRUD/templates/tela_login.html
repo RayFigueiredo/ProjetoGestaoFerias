@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+
 <head>
-  <title>Login - Sistema de Gestão de Férias</title>
+    <meta charset="UTF-8">
+  <title>{% block titulo %} Login - Sistema de Gestão de Férias{% endblock %}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <style>
-    body {
-      background: url('caminho/para/sua/imagem.jpg') no-repeat center center fixed;
-      background-size: cover;
-    }
+
     form {
       background-color: #fff;
       border-radius: 10px;
@@ -52,21 +55,34 @@
     }
   </style>
 </head>
+{% block body%}
 <body>
-  <h1>Sistema de Gestão de Férias</h1>
+  <h1>Gestão de Férias</h1>
+{% block formulario %}
+  <form method="POST">
+    {{form.csrf_token}}
 
-  <form action="login.php" method="post">
-    <label for="username">Usuário:</label>
-    <input type="text" id="username" name="username" required>
+    {{form.email.label}}
+    {{form.email()}}
 
-    <label for="password">Senha:</label>
-    <input type="password" id="password" name="password" required>
+    {{form.senha.label}}
+    {{form.senha}}
 
-    <input type="submit" value="Entrar">
+    {{form.botao_confirmacao}}
 
-    <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+<!--    <label for="username">Usuário:</label>-->
+<!--    <input type="text" id="username" name="username" required>-->
 
-    <p class="error">Usuário ou senha incorretos.</p>
+<!--    <label for="password">Senha:</label>-->
+<!--    <input type="password" id="password" name="password" required>-->
+
+<!--    <input type="submit" value="Entrar">-->
+
+<!--    <p>Não tem uma conta? <a href="">Cadastre-se</a></p>-->
+
+<!--    <p class="error">Usuário ou senha incorretos.</p>-->
   </form>
+{% endblock %}
 </body>
+{% endblock %}
 </html>

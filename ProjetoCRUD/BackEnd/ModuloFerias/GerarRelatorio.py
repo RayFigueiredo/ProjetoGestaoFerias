@@ -1,7 +1,9 @@
 from flask import render_template, request
+from flask_login import login_required, current_user
 from ProjetoCRUD import db, Departamento, Ferias, app
 
 
+@login_required
 @app.route("/pagina_relatorio", methods=["GET", "POST"])
 def pagina_gera_relatorio():
     if request.method == "POST":

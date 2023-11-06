@@ -1,7 +1,9 @@
 from flask import render_template, redirect, request, flash, url_for
+from flask_login import login_required, current_user
 from ProjetoCRUD import app, db, Funcionario, Departamento
 
 
+@login_required
 @app.route("/funcionario")
 def listar_funcionarios():
     # Carrega os dados da tabela Funcionario
@@ -13,6 +15,7 @@ def listar_funcionarios():
     return render_template('templates_func/tela_inicial_func.html', lista_func=lista_func, departamento_dict=departamento_dict)
 
 
+@login_required
 @app.route('/editar_funcionario/<mat>/', methods=['GET', 'POST'])
 def editar_funcionario(mat):
     # Lógica para buscar as informações do departamento com base em dpto_id
@@ -31,7 +34,7 @@ def editar_funcionario(mat):
             func.nome = novo_nome
             func.mat = nova_matricula
             db.session.commit()
-            flash("Departamento atualizado com sucesso!", "success")
+            flash("Funcionario atualizado com sucesso!", "success")
             return redirect(url_for("listar_funcionarios"))
         else:
             flash("O nome do funcionário não pode estar em branco.", "error")
@@ -39,6 +42,7 @@ def editar_funcionario(mat):
     return render_template('templates_func/pagina_editar.html', funcionario=func)
 
 
+@login_required
 @app.route("/deletar_funcionario/<mat>/", methods=['GET', 'POST'])
 def deletar_funcionario(mat):
     if request.method == 'POST':
@@ -58,6 +62,7 @@ def deletar_funcionario(mat):
         return render_template('templates_func/pagina_delete.html', mat=mat)
 
 
+@login_required
 @app.route("/cadastrar_funcionarios", methods=["GET", "POST"])
 def cadastrar_funcionarios():
     if request.method == "POST":

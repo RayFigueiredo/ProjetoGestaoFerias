@@ -1,12 +1,14 @@
 from flask import render_template, request, redirect, flash
+from flask_login import login_required, current_user
 from datetime import date
 
 
 from ProjetoCRUD import app
-from ProjetoCRUD.BluePrints.ModuloFerias.ViewCadastrarFerias import buscar_informacoes_ferias, e_fim_de_semana, atualizar_ferias
+from ProjetoCRUD.BackEnd.ModuloFerias.ViewCadastrarFerias import buscar_informacoes_ferias, e_fim_de_semana, atualizar_ferias
 
 
 @app.route('/editar/<int:ferias_id>/', methods=['GET', 'POST'])
+@login_required
 def editar_ferias(ferias_id):
     # Lógica para buscar as informações das férias com base em ferias_id
     ferias_info = buscar_informacoes_ferias(ferias_id)

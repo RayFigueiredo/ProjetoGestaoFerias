@@ -1,7 +1,9 @@
 from flask import render_template, redirect, request, flash, url_for
+from flask_login import login_required, current_user
 from ProjetoCRUD import app, db, Departamento
 
 
+@login_required
 @app.route("/departamento")
 def listar_departamentos():
     # Consulte a coluna "nome" da tabela "tb_dpto" e retorne os resultados
@@ -9,11 +11,8 @@ def listar_departamentos():
 
     return render_template('templates_dpto/tela_inicial_dpto.html', lista_dpto=lista_dpto)
 
-# @app.route("/visualizar_departamento/<nome>")
-# def visualizar_departamento(nome):
-#     # Lógica para visualizar o departamento com o nome fornecido
-#     return f"Visualizando departamento: {nome}"
-#
+
+@login_required
 @app.route('/editar_departamento/<int:dpto_id>/', methods=['GET', 'POST'])
 def editar_departamento(dpto_id):
     # Lógica para buscar as informações do departamento com base em dpto_id
@@ -37,7 +36,7 @@ def editar_departamento(dpto_id):
 
     return render_template('templates_dpto/pagina_editar.html', departamento=dpto)
 
-
+@login_required
 @app.route("/delete_departamento/<int:dpto_id>/", methods=['GET', 'POST'])
 def delete_departamento(dpto_id):
     if request.method == 'POST':
@@ -56,7 +55,7 @@ def delete_departamento(dpto_id):
         # para que o usuário confirme a exclusão antes de realizar a ação.
         return render_template('templates_dpto/pagina_delete.html', dpto_id=dpto_id)
 
-
+@login_required
 @app.route("/cadastrar_departamento", methods=["GET", "POST"])
 def cadastrar_departamento():
     if request.method == "POST":

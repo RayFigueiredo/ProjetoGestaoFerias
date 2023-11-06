@@ -1,7 +1,9 @@
 from flask import render_template, request, redirect
+from flask_login import login_required, current_user
 from ProjetoCRUD import app, db, Ferias
 
 
+@login_required
 @app.route('/delete/<int:ferias_id>/', methods=['GET', 'POST'])
 def delete_ferias(ferias_id):
     if request.method == 'POST':

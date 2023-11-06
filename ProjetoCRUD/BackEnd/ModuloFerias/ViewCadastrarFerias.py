@@ -1,5 +1,6 @@
 from flask import render_template, redirect, request, jsonify, flash
 from ProjetoCRUD import app, db, Departamento, Ferias, Funcionario
+from flask_login import login_required, current_user
 from sqlalchemy.sql import text
 from datetime import date, timedelta, datetime
 
@@ -13,7 +14,7 @@ def ajustar_data_se_fim_de_semana(data):
         data += timedelta(days=1)
     return data
 
-
+@login_required
 @app.route("/ferias")
 def listar_ferias():
 
@@ -25,7 +26,7 @@ def listar_ferias():
 
     return render_template('templates_ferias/tela_inicial_ferias.html', lista_ferias=lista_ferias)
 
-
+@login_required
 @app.route('/carregar_departamentos', methods=['GET'])
 def carrega_departamentos():
     # Execute consultas no banco de dados para obter a lista de departamentos
@@ -36,7 +37,7 @@ def carrega_departamentos():
     # Retorne os dados como uma resposta JSON
     return jsonify(departamentos_para_formulario)
 
-
+@login_required
 @app.route('/carregar_funcionarios', methods=['GET'])
 def carrega_funcionarios():
     dpto_id = request.args.get('dpto_id')  # Obtém o nome do departamento da solicitação GET
@@ -51,7 +52,7 @@ def carrega_funcionarios():
         # Trate os erros de banco de dados, se necessário
         return jsonify({'error': str(e)})
 
-
+@login_required
 @app.route("/tela_cadastro", methods=["GET", "POST"])
 def cadastro_ferias():
     if request.method == "POST":

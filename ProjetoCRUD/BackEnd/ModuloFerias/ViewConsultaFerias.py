@@ -1,8 +1,10 @@
 from flask import render_template
 from ProjetoCRUD import app
-from ProjetoCRUD.BluePrints.ModuloFerias.ViewCadastrarFerias import buscar_informacoes_ferias
+from flask_login import login_required, current_user
+from ProjetoCRUD.BackEnd.ModuloFerias.ViewCadastrarFerias import buscar_informacoes_ferias
 
 
+@login_required
 @app.route('/visualizar/<int:ferias_id>/', methods=['GET'])
 def visualizar_ferias(ferias_id):
     # Lógica para buscar as informações das férias com base em ferias_id
