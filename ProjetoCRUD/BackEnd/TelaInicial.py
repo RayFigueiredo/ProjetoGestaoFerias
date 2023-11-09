@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash
 from ProjetoCRUD import app
 from ProjetoCRUD.Models import Usuario, bcrypt, db
-from flask_login import login_required, login_user, logout_user, current_user
+from flask_login import login_required, login_user, logout_user
 from ProjetoCRUD.forms import FormLogin, FormCriarConta
 
 
@@ -21,8 +21,15 @@ def tela_login():
 def criar_conta():
     form_criarconta = FormCriarConta()
     if form_criarconta.validate_on_submit():
+        email = form_criarconta.email.data
+        usuario_existente = Usuario.query.filter_by(email=email).first()
+        if usuario_existente:
+            print('usuario já cadastrado')
+            flash("E-mail já cadastrado, faça login para continuar", "error")
+            return redirect(url_for('tela_login'))
+
         senha = bcrypt.generate_password_hash(form_criarconta.senha.data)
-        usuario = Usuario(username=form_criarconta.username.data, email=form_criarconta.email.data, senha=senha)
+        usuario = Usuario(username=form_criarconta.username.data, email=email, senha=senha)
         db.session.add(usuario)
         db.session.commit()
         flash("Conta Criada com sucesso!", "success")

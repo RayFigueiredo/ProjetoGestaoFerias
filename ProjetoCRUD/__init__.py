@@ -10,8 +10,11 @@ from ProjetoCRUD.BackEnd.ModuloDpto import ViewCRUDDpto
 from ProjetoCRUD.BackEnd.ModuloFunc import ViewCRUDFunc
 from ProjetoCRUD.BackEnd import TelaInicial
 
+
+app.config['SQLALCHEMY_DATABASE_URI'] ='mysql://admin:15b6688e71b5def74f934ded82bddc76@dbferias.ccftvaia78r3.us-east-1.rds.amazonaws.com:3306/bdferias'
+
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Mack#2351@localhost/bdferias'
-app.config['SQLALCHEMY_DATABASE_URI'] ='mysql://root:945bo1bQFfqgqWY3NtLH@containers-us-west-87.railway.app:6810/railway'
+# app.config['SQLALCHEMY_DATABASE_URI'] ='mysql://root:945bo1bQFfqgqWY3NtLH@containers-us-west-87.railway.app:6810/railway'
 app.config["SECRET_KEY"] = "15b6688e71b5def74f934ded82bddc76"
 # Inicialize o aplicativo com a extensão SQLAlchemy
 

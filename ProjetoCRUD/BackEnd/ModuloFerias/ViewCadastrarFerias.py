@@ -14,6 +14,7 @@ def ajustar_data_se_fim_de_semana(data):
         data += timedelta(days=1)
     return data
 
+
 @login_required
 @app.route("/ferias")
 def listar_ferias():
@@ -37,6 +38,7 @@ def carrega_departamentos():
     # Retorne os dados como uma resposta JSON
     return jsonify(departamentos_para_formulario)
 
+
 @login_required
 @app.route('/carregar_funcionarios', methods=['GET'])
 def carrega_funcionarios():
@@ -51,6 +53,7 @@ def carrega_funcionarios():
     except Exception as e:
         # Trate os erros de banco de dados, se necessário
         return jsonify({'error': str(e)})
+
 
 @login_required
 @app.route("/tela_cadastro", methods=["GET", "POST"])

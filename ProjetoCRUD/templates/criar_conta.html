@@ -2,27 +2,39 @@
 
 {% block titulo %}
   Cadastro Usuário
-  {% endblock %}
+{% endblock %}
 
 {% block formulario %}
+<div class="container">
+  <form method="POST">
+    {{ form.csrf_token }}
 
-<form method="POST">
-    {{form.csrf_token}}
+    {{ form.email.label }}
+    {{ form.email() }}
 
-    {{form.email.label}}
-    {{form.email()}}
+    {{ form.username.label }}
+    {{ form.username() }}
 
-    {{form.username.label}}
-    {{form.username()}}
+    {{ form.senha.label }}
+    {{ form.senha }}
 
-    {{form.senha.label}}
-    {{form.senha}}
+    {{ form.confirmacao_senha.label }}
+    {{ form.confirmacao_senha() }}
 
-    {{form.confirmacao_senha.label}}
-    {{form.confirmacao_senha()}}
+    {{ form.botao_confirmacao }}
 
-    {{form.botao_confirmacao}}
-
-
+    <!-- Exibir mensagens Flash -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-danger">
+          <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endwith %}
   </form>
+</div>
 {% endblock %}
