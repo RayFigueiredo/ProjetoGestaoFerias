@@ -23,17 +23,17 @@ def criar_conta():
     if form_criarconta.validate_on_submit():
         email = form_criarconta.email.data
         usuario_existente = Usuario.query.filter_by(email=email).first()
+
         if usuario_existente:
-            print('usuario já cadastrado')
             flash("E-mail já cadastrado, faça login para continuar", "error")
-            return redirect(url_for('tela_login'))
+            return redirect(url_for('criar_conta'))
 
         senha = bcrypt.generate_password_hash(form_criarconta.senha.data)
         usuario = Usuario(username=form_criarconta.username.data, email=email, senha=senha)
         db.session.add(usuario)
         db.session.commit()
-        flash("Conta Criada com sucesso!", "success")
-        return redirect(url_for('tela_login'))
+        flash("Conta Criada com sucesso! " "Faça Login para continuar", "success")
+        return redirect(url_for('criar_conta'))
 
     return render_template('criar_conta.html', form=form_criarconta)
 
@@ -46,7 +46,6 @@ def home():
 
 
 @app.route("/logout")
-@login_required
 def logout():
     logout_user()
     return redirect(url_for('tela_login'))

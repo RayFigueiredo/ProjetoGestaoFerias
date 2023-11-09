@@ -22,11 +22,13 @@
     {{ form.confirmacao_senha() }}
 
     {{ form.botao_confirmacao }}
+    <p></p>
+    <p>Já possui uma conta? <a href="{{url_for('tela_login')}}"> Tela de Login</a></p>
 
     <!-- Exibir mensagens Flash -->
     {% with messages = get_flashed_messages() %}
       {% if messages %}
-        <div class="alert alert-danger">
+        <div class="alert alert-info">
           <ul>
             {% for message in messages %}
               <li>{{ message }}</li>
