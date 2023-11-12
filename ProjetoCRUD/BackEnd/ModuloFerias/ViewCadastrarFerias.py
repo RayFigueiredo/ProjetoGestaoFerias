@@ -15,8 +15,8 @@ def ajustar_data_se_fim_de_semana(data):
     return data
 
 
-@login_required
 @app.route("/ferias")
+@login_required
 def listar_ferias():
 
     # Consulte todos os funcionários e suas férias
@@ -27,8 +27,9 @@ def listar_ferias():
 
     return render_template('templates_ferias/tela_inicial_ferias.html', lista_ferias=lista_ferias)
 
-@login_required
+
 @app.route('/carregar_departamentos', methods=['GET'])
+@login_required
 def carrega_departamentos():
     # Execute consultas no banco de dados para obter a lista de departamentos
     departamentos = Departamento.query.all()
@@ -39,8 +40,8 @@ def carrega_departamentos():
     return jsonify(departamentos_para_formulario)
 
 
-@login_required
 @app.route('/carregar_funcionarios', methods=['GET'])
+@login_required
 def carrega_funcionarios():
     dpto_id = request.args.get('dpto_id')  # Obtém o nome do departamento da solicitação GET
     try:
@@ -55,8 +56,8 @@ def carrega_funcionarios():
         return jsonify({'error': str(e)})
 
 
-@login_required
 @app.route("/tela_cadastro", methods=["GET", "POST"])
+@login_required
 def cadastro_ferias():
     if request.method == "POST":
         # Verifique se a data de início das férias é um fim de semana

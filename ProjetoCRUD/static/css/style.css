@@ -33,3 +33,37 @@ h1 {
     width: 20px; /* Defina o tamanho desejado em pixels */
     height: 20px;
 }
+
+nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(51, 51, 51, 0.8); /* Cor de fundo com transparência */
+}
+
+/* Estilo para os itens da barra de navegação */
+nav a {
+    float: left; /* Alinha os itens horizontalmente */
+    display: block; /* Cada item é exibido como bloco */
+    color: white; /* Cor do texto */
+    text-align: center; /* Alinha o texto ao centro */
+    padding: 14px 16px; /* Espaçamento interno dos itens */
+    text-decoration: none; /* Remove a decoração de texto padrão (sublinhado) */
+    font-weight: bold; /* Texto em negrito */
+    border-right: 1px solid transparent; /* Linha divisória entre os blocos */
+}
+
+/* Altera a cor do texto quando o mouse passa sobre os itens */
+nav a:hover {
+    background-color: rgba(221, 221, 221, 0.3); /* Cor de fundo com transparência ao passar o mouse */
+    color: black; /* Cor do texto ao passar o mouse */
+}
+
+/* Adiciona um estilo diferente para o último item (Sair) */
+nav a:last-child {
+    float: right; /* Alinha o último item à direita */
+    border-right: none; /* Remove a linha divisória para o último bloco */
+}
+
+

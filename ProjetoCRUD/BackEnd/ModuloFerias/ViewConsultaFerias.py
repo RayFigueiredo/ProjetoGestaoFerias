@@ -4,8 +4,8 @@ from flask_login import login_required, current_user
 from ProjetoCRUD.BackEnd.ModuloFerias.ViewCadastrarFerias import buscar_informacoes_ferias
 
 
-@login_required
 @app.route('/visualizar/<int:ferias_id>/', methods=['GET'])
+@login_required
 def visualizar_ferias(ferias_id):
     # Lógica para buscar as informações das férias com base em ferias_id
     ferias_info = buscar_informacoes_ferias(ferias_id)

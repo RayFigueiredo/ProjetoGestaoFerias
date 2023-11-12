@@ -1,10 +1,10 @@
 from flask import render_template, redirect, request, flash, url_for
-from flask_login import login_required, current_user
+from flask_login import login_required
 from ProjetoCRUD import app, db, Funcionario, Departamento
 
 
-@login_required
 @app.route("/funcionario")
+@login_required
 def listar_funcionarios():
     # Carrega os dados da tabela Funcionario
     lista_func = Funcionario.query.all()
@@ -15,8 +15,8 @@ def listar_funcionarios():
     return render_template('templates_func/tela_inicial_func.html', lista_func=lista_func, departamento_dict=departamento_dict)
 
 
-@login_required
 @app.route('/editar_funcionario/<mat>/', methods=['GET', 'POST'])
+@login_required
 def editar_funcionario(mat):
     # Lógica para buscar as informações do departamento com base em dpto_id
     func = Funcionario.query.get(mat)
@@ -42,8 +42,8 @@ def editar_funcionario(mat):
     return render_template('templates_func/pagina_editar.html', funcionario=func)
 
 
-@login_required
 @app.route("/deletar_funcionario/<mat>/", methods=['GET', 'POST'])
+@login_required
 def deletar_funcionario(mat):
     if request.method == 'POST':
         # Processar a exclusão do departamento com base no dpto_id
@@ -62,8 +62,8 @@ def deletar_funcionario(mat):
         return render_template('templates_func/pagina_delete.html', mat=mat)
 
 
-@login_required
 @app.route("/cadastrar_funcionarios", methods=["GET", "POST"])
+@login_required
 def cadastrar_funcionarios():
     if request.method == "POST":
         # Obter os dados do formulário

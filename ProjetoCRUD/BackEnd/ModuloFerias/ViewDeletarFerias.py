@@ -3,8 +3,9 @@ from flask_login import login_required, current_user
 from ProjetoCRUD import app, db, Ferias
 
 
-@login_required
+
 @app.route('/delete/<int:ferias_id>/', methods=['GET', 'POST'])
+@login_required
 def delete_ferias(ferias_id):
     if request.method == 'POST':
         # Processar a exclusão das férias com base no ferias_id

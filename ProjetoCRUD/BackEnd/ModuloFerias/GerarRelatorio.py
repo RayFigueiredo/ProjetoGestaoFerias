@@ -3,8 +3,8 @@ from flask_login import login_required, current_user
 from ProjetoCRUD import db, Departamento, Ferias, app
 
 
-@login_required
 @app.route("/pagina_relatorio", methods=["GET", "POST"])
+@login_required
 def pagina_gera_relatorio():
     if request.method == "POST":
         departamento_id = request.form.get("departamento")
